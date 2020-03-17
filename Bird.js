@@ -1,12 +1,12 @@
 class Bird {
 
     constructor() {
-        this.x = 30;
+        this.x = 300;
         this.y = height / 2;
         this.d = 30;
         this.r = this.d / 2;
         this.velocity = 0;
-        this.gravity = 1;
+        this.gravity = .75;
         this.antiGravity = 15;
         this.dead = false;
     }

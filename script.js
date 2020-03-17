@@ -30,7 +30,7 @@ function download() {
 	document.body.appendChild(a);
 	a.style = 'display: none';
 	a.href = url;
-	a.download = 'test.webm';
+	a.download = 'hoi.webm';
 	a.click();
 	window.URL.revokeObjectURL(url);
 
@@ -42,14 +42,12 @@ function download() {
 	  textDoc.click();
 }
 
-
-
 var bird;
 var pipes = [];
-var texts = []
+var texts = [];
 
 function setup() {
-  createCanvas(400, 600);
+  createCanvas(1200, 700);
   bird = new Bird();
   this.score = 0;
   var el = document.getElementById('finished');
@@ -81,7 +79,7 @@ function draw() {
     bird.update();
     bird.checkBorder();
 
-    if (frameCount % 40 == 0) {
+    if (frameCount % 60 == 0) {
       pipes.push(new Pipe());
     }
 
@@ -96,6 +94,7 @@ function draw() {
 
       if (p.scored(bird)) {
         this.score++;
+        console.log(score + " Timestamp: " + Date.now())
       }
     }
 
