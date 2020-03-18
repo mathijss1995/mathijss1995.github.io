@@ -1,6 +1,7 @@
 var recordedChunks = [];
 var constraints = { audio: false, video: true };
 var options = {mimeType: 'video/webm; codecs=vp9'};
+let data = "Test";
 
 //Comment for Github
 
@@ -58,6 +59,9 @@ function setup() {
 }
 
 function draw() {
+	var str = Date.now() + "," + "newFrame" + "," + 'BirdStatus: ' + bird.dead + ',' + score + 'EndLine' + '\n';
+    texts.push(str)
+
   background(135,206,235);
 
   noStroke();
@@ -88,8 +92,8 @@ function draw() {
       p.update();
       if (p.hit(bird)) {
         bird.dead = true;
-        var str = Date.now() + "," + "DEAD" + "," + score;
-    	texts.push(str)
+        //var str = Date.now() + "," + "DEAD" + "," + score;
+    	//texts.push(str)
       }
 
       if (p.scored(bird)) {
@@ -128,13 +132,13 @@ function mousePressed() {
 function keyPressed() {
   if (key == ' ') {
     bird.jump();
-    var str = Date.now() + "," + "JUMP" + "," + score;
-    texts.push(str)
+    //var str = Date.now() + "," + "JUMP" + "," + score+ '\n';
+    //texts.push(str)
   } else if(keyCode === RETURN || keyCode === ENTER){
     pipes = [];
     bird = new Bird();
     this.score = 0;
-    var str = Date.now() + "," + "RESET" + "," + score;
-    texts.push(str)
+    //var str = Date.now() + "," + "RESET" + "," + score +'\n';
+    //texts.push(str)
   }
 }
