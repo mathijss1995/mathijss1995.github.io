@@ -3,8 +3,8 @@ class Pipe {
     constructor() {
         this.spacing = 140-score*3;
         this.x = width - 50;
-        this.yUP = random(150, height - (this.spacing * 2));
-        this.yDW = this.yUP + this.spacing;
+        this.yUP = random(150, height - (this.spacing * 2 - score));
+        this.yDW = this.yUP + this.spacing+score;
         this.w = 32;
         this.speed = 5;
     }

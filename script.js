@@ -51,6 +51,8 @@ function setup() {
   createCanvas(1200, 700);
   bird = new Bird();
   this.score = 0;
+  document.getElementById('timer').innerHTML = 000 + ":" + 20; //set lenght
+	startTimer();
   var el = document.getElementById('finished');
 	if(el){
 		console.log(" haha")
@@ -60,7 +62,7 @@ function setup() {
 
 function draw() {
 	var str = Date.now() + "," + "newFrame" + "," + 'BirdStatus: ' + bird.dead + ',' + score + 'EndLine' + '\n';
-    texts.push(str)
+    texts.push(str);
 
   background(135,206,235);
 
@@ -70,8 +72,7 @@ function draw() {
   textSize(32);
   text(this.score, width / 2, 50);
 
-  if (!bird.dead) {
-
+  if (bird.dead == 'no') {
     noStroke();
     fill(205,133,63);
     rect(0, height - 32, width, height - 32);
@@ -79,8 +80,9 @@ function draw() {
     fill(255, 255, 0);
     ellipse(0, 0, 256, 256);
 
-    bird.show();
+    
     bird.update();
+    bird.show();
     bird.checkBorder();
 
     if (frameCount % 60 == 0) {
@@ -91,7 +93,7 @@ function draw() {
       p.show();
       p.update();
       if (p.hit(bird)) {
-        bird.dead = true;
+        bird.dead = 'yes';
         //var str = Date.now() + "," + "DEAD" + "," + score;
     	//texts.push(str)
       }
@@ -108,7 +110,7 @@ function draw() {
       }
     }
 
-  } else if (bird.dead) {
+  } else if (bird.dead == 'yes') {
 
     noStroke();
     fill(0);
@@ -120,11 +122,25 @@ function draw() {
     textSize(32);
     fill(0);
     text("DEAD!", width / 2, 200);
+
+
+    text(sec, width / 2, 100);
+
+  } else if (bird.dead == 'notStarted'){
+  	text("Welcome", width/2, height/2);
+
+  	var button = document.createElement("button");
+  	button.innerHTML = "Do Something"
+
+  	var body = document.getElementsByTagName("body")[0];
+  	body.appendChild(button);
+
+  	button.addEventListener ("click", function(){alert("did something")});
   }
 }
 
 function mousePressed() {
-  if(!bird.dead){
+  if(bird.dead == 'no'){
     bird.jump();
   }
 }
@@ -142,3 +158,28 @@ function keyPressed() {
     //texts.push(str)
   }
 }
+
+function startTimer() {
+  var presentTime = document.getElementById('timer').innerHTML;
+  var timeArray = presentTime.split(/[:]+/);
+  var m = timeArray[0];
+  var s = checkSecond((timeArray[1] - 1));
+  if(s==59){m=m-1}
+  //if(m<0){alert('timer completed')}
+  
+  document.getElementById('timer').innerHTML =
+    m + ":" + s;
+  console.log(m)
+  setTimeout(startTimer, 1000);
+
+  if (s == 0 && m == 0){
+  	download()
+  }
+}
+
+function checkSecond(sec) {
+  if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
+  if (sec < 0) {sec = "59"};
+  return sec;
+}
+

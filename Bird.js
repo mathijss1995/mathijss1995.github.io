@@ -8,15 +8,11 @@ class Bird {
         this.velocity = 0;
         this.gravity = .75;
         this.antiGravity = 15;
-        this.dead = false;
+        //this.dead = false;
+        this.dead = 'notStarted';
     }
 
-    show() {
-        fill(255, 255, 50);
-        stroke(0);
-        strokeWeight(3);
-        ellipse(this.x, this.y, this.d, this.d);
-    }
+
 
     update() {
         this.velocity += this.gravity;
@@ -28,9 +24,22 @@ class Bird {
         this.velocity -= this.antiGravity;
     }
 
+    show() {
+        //text("Velocity" + this.velocity, width/2, height/2);
+        if (this.velocity > 0){
+            fill(50,255,255);
+        } else if (this.velocity <= 0){
+            fill(255,50,50)
+        }
+
+        stroke(0);
+        strokeWeight(3);
+        ellipse(this.x, this.y, this.d, this.d);
+    }
+
     checkBorder() {
         if (this.y > height - 32) {
-            bird.dead = true;
+            bird.dead = 'yes';
             this.y = height - 32;
         } else if (this.y < 0) {
             this.y = 0;
