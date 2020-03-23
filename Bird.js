@@ -9,7 +9,7 @@ class Bird {
         this.gravity = .75;
         this.antiGravity = 15;
         //this.dead = false;
-        this.dead = 'notStarted';
+        this.dead = 'no'; //notStarted, yes, no
     }
 
 

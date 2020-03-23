@@ -21,6 +21,18 @@ function handleDataAvailable(event) {
   }
 }
 
+var video = document.querySelector("#videoElement");
+
+if (navigator.mediaDevices.getUserMedia) {
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then(function (stream) {
+      video.srcObject = stream;
+    })
+    .catch(function (err0r) {
+      console.log("Something went wrong!");
+    });
+}
+
 function download() {
 	mediaRecorder.stop()
 	var blob = new Blob(recordedChunks, {
@@ -29,6 +41,8 @@ function download() {
 	var url = URL.createObjectURL(blob);
 	var a = document.createElement('a');
 	document.body.appendChild(a);
+	var webcamTime = Date.now();
+
 	a.style = 'display: none';
 	a.href = url;
 	a.download = 'hoi.webm';
@@ -61,7 +75,7 @@ function setup() {
 }
 
 function draw() {
-	var str = Date.now() + "," + "newFrame" + "," + 'BirdStatus: ' + bird.dead + ',' + score + 'EndLine' + '\n';
+	var str = Date.now() + "," + "newFrame" + "," + 'BirdStatus: ' + bird.dead + ',' + score + 'EndLine' + ';';
     texts.push(str);
 
   background(135,206,235);
@@ -129,13 +143,10 @@ function draw() {
   } else if (bird.dead == 'notStarted'){
   	text("Welcome", width/2, height/2);
 
-  	var button = document.createElement("button");
-  	button.innerHTML = "Do Something"
-
-  	var body = document.getElementsByTagName("body")[0];
-  	body.appendChild(button);
-
-  	button.addEventListener ("click", function(){alert("did something")});
+  	if (key == 'a' ){
+  		bird.dead == 'no';
+  	}
+  	
   }
 }
 
@@ -156,6 +167,8 @@ function keyPressed() {
     this.score = 0;
     //var str = Date.now() + "," + "RESET" + "," + score +'\n';
     //texts.push(str)
+  } else if(keyCode == SHIFT){ //Scherm gaat niet door
+  	bird.dead == 'no';
   }
 }
 
