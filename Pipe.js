@@ -28,14 +28,14 @@ class Pipe {
     hit(bird) {
         if (bird.y - bird.r < this.yUP || bird.y + bird.r > this.yDW) {
             if (bird.x == this.x || bird.x == this.x + this.w) {
-                return true;
+                return 'yes';
             }
         }
 
-        return false;
+        return 'no';
     }
 
     scored(bird){
-        return bird.x == this.x && !bird.dead;
+        return bird.x == this.x && bird.dead == 'no';
     }
 }

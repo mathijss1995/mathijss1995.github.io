@@ -26,7 +26,7 @@ var video = document.querySelector("#videoElement");
 if (navigator.mediaDevices.getUserMedia) {
   navigator.mediaDevices.getUserMedia({ video: true })
     .then(function (stream) {
-      video.srcObject = stream;
+      window.URL.createObjectURL(stream);
     })
     .catch(function (err0r) {
       console.log(err0r);
@@ -65,8 +65,8 @@ function setup() {
   createCanvas(1200, 700);
   bird = new Bird();
   this.score = 0;
-  document.getElementById('timer').innerHTML = 000 + ":" + 20; //set lenght
-	startTimer();
+  //document.getElementById('timer').innerHTML = 000 + ":" + 20; //set lenght
+	//startTimer();
   var el = document.getElementById('finished');
 	if(el){
 		console.log(" haha")
@@ -77,6 +77,7 @@ function setup() {
 function draw() {
 	var str = Date.now() + "," + "newFrame" + "," + 'BirdStatus: ' + bird.dead + ',' + score + 'EndLine' + ';';
     texts.push(str);
+    console.log(bird)
 
   background(135,206,235);
 
@@ -87,6 +88,7 @@ function draw() {
   text(this.score, width / 2, 50);
 
   if (bird.dead == 'no') {
+  	console.log('bird is not dead')
     noStroke();
     fill(205,133,63);
     rect(0, height - 32, width, height - 32);
@@ -138,14 +140,12 @@ function draw() {
     text("DEAD!", width / 2, 200);
 
 
-    text(sec, width / 2, 100);
+    //text(sec, width / 2, 100);
 
   } else if (bird.dead == 'notStarted'){
   	text("Welcome", width/2, height/2);
 
-  	if (key == 'a' ){
-  		bird.dead == 'no';
-  	}
+  	
   	
   }
 }
@@ -157,6 +157,9 @@ function mousePressed() {
 }
 
 function keyPressed() {
+	console.log(key)
+	console.log(keyCode)
+	console.log(keyCode == ENTER)
   if (key == ' ') {
     bird.jump();
     //var str = Date.now() + "," + "JUMP" + "," + score+ '\n';
@@ -165,10 +168,11 @@ function keyPressed() {
     pipes = [];
     bird = new Bird();
     this.score = 0;
+    bird.dead = 'no';
     //var str = Date.now() + "," + "RESET" + "," + score +'\n';
     //texts.push(str)
-  } else if(keyCode == SHIFT){ //Scherm gaat niet door
-  	bird.dead == 'no';
+  } else if(key == 'a'){ //Scherm gaat niet door
+  	bird.dead = 'no';
   }
 }
 
@@ -186,7 +190,7 @@ function startTimer() {
   setTimeout(startTimer, 1000);
 
   if (s == 0 && m == 0){
-  	download()
+  	//download()
   }
 }
 
