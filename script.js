@@ -11,6 +11,7 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 		mediaRecorder = new MediaRecorder(stream, options);
 		mediaRecorder.ondataavailable = handleDataAvailable;
 		mediaRecorder.start(2000);
+		webcamTime = Date.now() + 2000;
 	})
 }
 
@@ -41,11 +42,11 @@ function download() {
 	var url = URL.createObjectURL(blob);
 	var a = document.createElement('a');
 	document.body.appendChild(a);
-	var webcamTime = Date.now();
+	
 
 	a.style = 'display: none';
 	a.href = url;
-	a.download = 'hoi.webm';
+	a.download = str(webcamTime)+'.webm';
 	a.click();
 	window.URL.revokeObjectURL(url);
 
@@ -62,6 +63,7 @@ var pipes = [];
 var texts = [];
 
 function setup() {
+	setTimeout(function(){ download(); }, 10000);
   createCanvas(1200, 700);
   bird = new Bird();
   this.score = 0;
@@ -77,7 +79,6 @@ function setup() {
 function draw() {
 	var str = Date.now() + "," + "newFrame" + "," + 'BirdStatus: ' + bird.dead + ',' + score + 'EndLine' + ';';
     texts.push(str);
-    console.log(bird)
 
   background(135,206,235);
 
@@ -108,7 +109,8 @@ function draw() {
     for (var p of pipes) {
       p.show();
       p.update();
-      if (p.hit(bird)) {
+      if (p.hit(bird) == 'yes') {
+      	console.log("I'm dead")
         bird.dead = 'yes';
         //var str = Date.now() + "," + "DEAD" + "," + score;
     	//texts.push(str)
@@ -157,9 +159,6 @@ function mousePressed() {
 }
 
 function keyPressed() {
-	console.log(key)
-	console.log(keyCode)
-	console.log(keyCode == ENTER)
   if (key == ' ') {
     bird.jump();
     //var str = Date.now() + "," + "JUMP" + "," + score+ '\n';
