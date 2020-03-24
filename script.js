@@ -5,6 +5,17 @@ let data = "Test";
 
 //Comment for Github
 
+
+function startExperiment(){
+  // console.log("haha")
+  var x = document.getElementById("container");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
 if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 	console.log("satisfied")
 	navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
@@ -16,18 +27,21 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 }
 
 function handleDataAvailable(event) {
-  console.log(event)
+  // console.log(event)
   if (event.data.size > 0) {
     recordedChunks.push(event.data);
   }
 }
 
-var video = document.querySelector("#videoElement");
+
 
 if (navigator.mediaDevices.getUserMedia) {
   navigator.mediaDevices.getUserMedia({ video: true })
     .then(function (stream) {
-      window.URL.createObjectURL(stream);
+      console.log(stream)
+      var video = document.getElementById("videoElement");
+      video.srcObject = stream
+      console.log(video)
     })
     .catch(function (err0r) {
       console.log(err0r);
@@ -63,7 +77,9 @@ var pipes = [];
 var texts = [];
 
 function setup() {
-	setTimeout(function(){ download(); }, 10000);
+	// setTimeout(function(){ download(); }, 10000);
+  document.getElementById("startExperiment").addEventListener("click", startExperiment);
+
   createCanvas(1200, 700);
   bird = new Bird();
   this.score = 0;
