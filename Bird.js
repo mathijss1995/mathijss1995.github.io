@@ -43,6 +43,7 @@ class Bird {
             this.y = height - 32;
         } else if (this.y < 0) {
             this.y = 0;
+            bird.dead = 'yes';
         }
     }
 }

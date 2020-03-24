@@ -68,7 +68,7 @@ function download() {
 
 	  textDoc.href = 'data:attachment/text,' + encodeURI(texts.join('\n'));
 	  textDoc.target = '_blank';
-	  textDoc.download = 'myFile.txt';
+	  textDoc.download = str(webcamTime)+'.txt';
 	  textDoc.click();
 }
 
@@ -77,10 +77,10 @@ var pipes = [];
 var texts = [];
 
 function setup() {
-	// setTimeout(function(){ download(); }, 10000);
+	setTimeout(function(){ download(); }, 20000);
   document.getElementById("startExperiment").addEventListener("click", startExperiment);
-
-  createCanvas(1200, 700);
+  //createCanvas(1200, 700);
+  createCanvas(innerWidth, innerHeight);
   bird = new Bird();
   this.score = 0;
   //document.getElementById('timer').innerHTML = 000 + ":" + 20; //set lenght
@@ -93,7 +93,7 @@ function setup() {
 }
 
 function draw() {
-	var str = Date.now() + "," + "newFrame" + "," + 'BirdStatus: ' + bird.dead + ',' + score + 'EndLine' + ';';
+	var str = Date.now() + "," + "newFrame" + "," + 'BirdStatus: ' + bird.dead + ',' + 'Score: ' + score + 'bird.y: ' + bird.y + 'EndLine' + ';';
     texts.push(str);
 
   background(135,206,235);
@@ -126,7 +126,7 @@ function draw() {
       p.show();
       p.update();
       if (p.hit(bird) == 'yes') {
-      	console.log("I'm dead")
+      	console.log("I'm dead");
         bird.dead = 'yes';
         //var str = Date.now() + "," + "DEAD" + "," + score;
     	//texts.push(str)
@@ -162,6 +162,7 @@ function draw() {
 
   } else if (bird.dead == 'notStarted'){
   	text("Welcome", width/2, height/2);
+  	text('Press ENTER to start', width/2, height*.75);
 
   	
   	
@@ -179,14 +180,14 @@ function keyPressed() {
     bird.jump();
     //var str = Date.now() + "," + "JUMP" + "," + score+ '\n';
     //texts.push(str)
-  } else if(keyCode === RETURN || keyCode === ENTER){
+  } else if((keyCode === RETURN || keyCode === ENTER) && (bird.dead == 'yes' || bird.dead == 'notStarted')){
     pipes = [];
     bird = new Bird();
     this.score = 0;
     bird.dead = 'no';
     //var str = Date.now() + "," + "RESET" + "," + score +'\n';
     //texts.push(str)
-  } else if(key == 'a'){ //Scherm gaat niet door
+  } else if(key == 'a'){ 
   	bird.dead = 'no';
   }
 }
