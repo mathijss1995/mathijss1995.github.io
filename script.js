@@ -77,10 +77,11 @@ var pipes = [];
 var texts = [];
 
 function setup() {
-	setTimeout(function(){ download(); }, 20000);
+	setTimeout(function(){ download(); }, 30000);
   document.getElementById("startExperiment").addEventListener("click", startExperiment);
   //createCanvas(1200, 700);
-  createCanvas(innerWidth, innerHeight);
+  console.log('width: ' + innerWidth + 'height: ' + innerHeight);
+  createCanvas(window.innerWidth, window.innerHeight);
   bird = new Bird();
   this.score = 0;
   //document.getElementById('timer').innerHTML = 000 + ":" + 20; //set lenght
@@ -93,7 +94,7 @@ function setup() {
 }
 
 function draw() {
-	var str = Date.now() + "," + "newFrame" + "," + 'BirdStatus: ' + bird.dead + ',' + 'Score: ' + score + 'bird.y: ' + bird.y + 'EndLine' + ';';
+	var str = "newFrame" + ";" + Date.now() + ';BirdStatus; ' + bird.dead + ';Score; ' + score + ';bird.y; ' + bird.y + ';EndLine' + ';';
     texts.push(str);
 
   background(135,206,235);
@@ -172,14 +173,16 @@ function draw() {
 function mousePressed() {
   if(bird.dead == 'no'){
     bird.jump();
+    var str = "JUMP;" + Date.now() + ";EndLineJump" + ';';
+    texts.push(str);
   }
 }
 
 function keyPressed() {
   if (key == ' ') {
     bird.jump();
-    //var str = Date.now() + "," + "JUMP" + "," + score+ '\n';
-    //texts.push(str)
+    var str = "JUMP;" + Date.now() + ";EndLineJump" + ';';
+    texts.push(str);
   } else if((keyCode === RETURN || keyCode === ENTER) && (bird.dead == 'yes' || bird.dead == 'notStarted')){
     pipes = [];
     bird = new Bird();
