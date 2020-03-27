@@ -14,6 +14,7 @@ function startExperiment(){
   } else {
     x.style.display = "none";
   }
+  setTimeout(function(){ download(); }, 30000);
 }
 
 if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -77,7 +78,7 @@ var pipes = [];
 var texts = [];
 
 function setup() {
-	setTimeout(function(){ download(); }, 30000);
+	
   document.getElementById("startExperiment").addEventListener("click", startExperiment);
   //createCanvas(1200, 700);
   console.log('width: ' + innerWidth + 'height: ' + innerHeight);
