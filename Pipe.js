@@ -3,7 +3,7 @@ class Pipe {
     constructor() {
         this.spacing = 140;
         this.x = width - 50;
-        this.yUP = random(150, height - (this.spacing * 2 - score*10));
+        this.yUP = random(150, innerHeight - (this.spacing * 2 - score*10));
         this.yDW = this.yUP + this.spacing+score*10;
         this.w = 32;
         this.speed = 5;
@@ -14,7 +14,7 @@ class Pipe {
         strokeWeight(3);
         fill(0, 255, 0);
         rect(this.x, 0, this.w, this.yUP);
-        rect(this.x, this.yDW, this.w, height);
+        rect(this.x, this.yDW, this.w, innerHeight);
     }
 
     update() {
