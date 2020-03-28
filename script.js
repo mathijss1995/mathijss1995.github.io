@@ -267,6 +267,9 @@ function die(){
   }
   bird.velocity.y = 0
   bird.rotationSpeed = 0
+  var str = "die;" + Date.now() + ";EndLineDie" + ';';
+  texts.push(str);
+
 
   
 }
@@ -277,6 +280,8 @@ function reset(){
   bird.position.y = 300
   bird.rotation = 0
   score = 0
+  var str = "reset;" + Date.now() + ";EndLineReset" + ';';
+  texts.push(str)
   // var str = "RESET;";
   // texts.push(str);
 }
