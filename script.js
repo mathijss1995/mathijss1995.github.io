@@ -154,7 +154,8 @@ function draw() {
   } else if (score > 35){
     frameDifficulty = 45;
   }
-
+  console.log('frameDifficulty: ' + frameDifficulty);
+  
   if(frameCount % frameDifficulty == 0 && !IS_DEAD && STARTED){
 
     gap = int(random(PIPE_GAP_MIN, PIPE_GAP_MAX))
