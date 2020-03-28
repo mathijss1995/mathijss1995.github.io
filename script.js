@@ -143,12 +143,11 @@ function draw() {
   } else if (bird.rotation < -65){
     bird.rotation = -65
   }
-  console.log('gap: ' + gap);
+
 
   if(frameCount % 80 == 0 && !IS_DEAD && STARTED){
 
     gap = int(random(PIPE_GAP_MIN, PIPE_GAP_MAX))
-    console.log('gap: ' + gap)
 
     //bottom pipes
     bottomBodies = int(random(PIPE_GAP_MAX, MAX_NUMBER_BODIES)) - gap
