@@ -8,8 +8,8 @@ GROUND_Y = SCREEN_HEIGHT-(SCREEN_HEIGHT/10)
 PIPE_VELOCITY = -6
 IS_DEAD = false
 PIPE_BODY_HEIGHT = 70
-PIPE_GAP_MIN = 10
-PIPE_GAP_MAX = 50
+PIPE_GAP_MIN = 1
+PIPE_GAP_MAX = 5
 PIPE_BOTTOM_MIN = GROUND_Y -100
 SCALE = 0.5
 
@@ -147,7 +147,7 @@ function draw() {
 
   if(frameCount % 100 == 0 && !IS_DEAD && STARTED){
 
-    gap = int(random(PIPE_GAP_MIN, PIPE_GAP_MAX))
+    gap = int(random(PIPE_GAP_MIN, PIPE_GAP_MAX)+50)
 
     //bottom pipes
     bottomBodies = int(random(PIPE_GAP_MAX, MAX_NUMBER_BODIES)) - gap
