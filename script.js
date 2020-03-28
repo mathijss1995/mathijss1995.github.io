@@ -4,14 +4,14 @@ BIRD_GRAVITY = .25;
 BIRD_ANTIGRAVITY = -7;
 BIRD_ROTATION_DROP = 0.15;
 BIRD_ROTATION_JUMP = -4.2;
-GROUND_Y = SCREEN_HEIGHT-(SCREEN_HEIGHT/10);
-PIPE_VELOCITY = -6;
-IS_DEAD = false;
-PIPE_BODY_HEIGHT = 70;
-PIPE_GAP_MIN = 1;
-PIPE_GAP_MAX = 5;
-PIPE_BOTTOM_MIN = GROUND_Y -100;
-SCALE = 0.5;
+GROUND_Y = SCREEN_HEIGHT-(SCREEN_HEIGHT/10)
+PIPE_VELOCITY = -6
+IS_DEAD = false
+PIPE_BODY_HEIGHT = 70
+PIPE_GAP_MIN = 1
+PIPE_GAP_MAX = 5
+PIPE_BOTTOM_MIN = GROUND_Y -100
+SCALE = 0.5
 
 
 var recordedChunks = [];
@@ -148,7 +148,6 @@ function draw() {
   if(frameCount % 100 == 0 && !IS_DEAD && STARTED){
 
     gap = int(random(PIPE_GAP_MIN, PIPE_GAP_MAX))
-    console.log('gap: ' + gap);
 
     //bottom pipes
     bottomBodies = int(random(PIPE_GAP_MAX, MAX_NUMBER_BODIES)) - gap
