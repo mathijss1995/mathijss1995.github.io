@@ -149,8 +149,6 @@ function draw() {
 
     gap = int(random(PIPE_GAP_MIN, PIPE_GAP_MAX))
 
-    console.log('gap: ' + gap)
-
     //bottom pipes
     bottomBodies = int(random(PIPE_GAP_MAX, MAX_NUMBER_BODIES)) - gap
     for(var i=0; i<bottomBodies; i++){
