@@ -216,6 +216,8 @@ function draw() {
   textSize(32);
   text(score, 50, 50)
 
+  console.log('Gap: ' + gap)
+
   if(IS_DEAD){
     noStroke();
     fill(255);
