@@ -95,7 +95,7 @@ function preload() {
   pipeBodyImg = loadImage('pipe_1.png');
   pipeHeadImg = loadImage('pipe_2.png');
   birdImg = loadImage('bird.png');
-  myFont = loadFont('8bit.TTF');
+  //myFont = loadFont('8bit.TTF');
 }
 
 
@@ -211,7 +211,7 @@ function draw() {
 
   noStroke();
   fill(255);
-  textFont(myFont)
+  //textFont(myFont)
   textAlign(CENTER);
   textSize(32);
   text(score, 50, 50)
@@ -219,7 +219,7 @@ function draw() {
   if(IS_DEAD){
     noStroke();
     fill(255);
-    textFont(myFont)
+    //textFont(myFont)
     textAlign(CENTER);
     textSize(32);
     var str = "Total score: "+ score + "\nPress R to reset."
