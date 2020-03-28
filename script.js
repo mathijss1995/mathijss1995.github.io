@@ -143,7 +143,7 @@ function draw() {
   } else if (bird.rotation < -65){
     bird.rotation = -65
   }
-
+  console.log('gap: ' + gap);
 
   if(frameCount % 80 == 0 && !IS_DEAD && STARTED){
 
