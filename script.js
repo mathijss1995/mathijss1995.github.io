@@ -144,8 +144,18 @@ function draw() {
     bird.rotation = -65
   }
 
+  var frameDifficulty = 80;
+  if (score > 10){
+    frameDifficulty = 70;
+  } else if (score > 20){
+    frameDifficulty = 60;
+  } else if (score > 25){
+    frameDifficulty = 50;
+  } else if (score > 35){
+    frameDifficulty = 45;
+  }
 
-  if(frameCount % 60 == 0 && !IS_DEAD && STARTED){
+  if(frameCount % frameDifficulty == 0 && !IS_DEAD && STARTED){
 
     gap = int(random(PIPE_GAP_MIN, PIPE_GAP_MAX))
 
