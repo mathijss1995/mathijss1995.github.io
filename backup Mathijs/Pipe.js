@@ -7,18 +7,14 @@ class Pipe {
         this.yDW = this.yUP + this.spacing+score*10;
         this.w = 32;
         this.speed = 5;
-        var pipe =  createSprite(this.x, 0, this.w, this.yUP)
-        var pipe2 = createSprite(this.x, this.yDW, this.w, innerHeight)
     }
 
     show() {
-        // stroke(0);
-        // strokeWeight(3);
-        // fill(0, 255, 0);
-        // rect(this.x, 0, this.w, this.yUP);
-        // rect(this.x, this.yDW, this.w, innerHeight);
-        
-
+        stroke(0);
+        strokeWeight(3);
+        fill(0, 255, 0);
+        rect(this.x, 0, this.w, this.yUP);
+        rect(this.x, this.yDW, this.w, innerHeight);
     }
 
     update() {
