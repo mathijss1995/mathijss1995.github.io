@@ -5,7 +5,7 @@ BIRD_ANTIGRAVITY = -7;
 BIRD_ROTATION_DROP = 0.15;
 BIRD_ROTATION_JUMP = -4.2;
 GROUND_Y = SCREEN_HEIGHT-(SCREEN_HEIGHT/10)
-PIPE_VELOCITY = -60
+PIPE_VELOCITY = -6
 IS_DEAD = false
 PIPE_BODY_HEIGHT = 70
 PIPE_GAP_MIN = 1
@@ -145,11 +145,15 @@ function draw() {
   }
 
 
-  if(frameCount % 80 == 0 && !IS_DEAD && STARTED){
+  if(frameCount % 60 == 0 && !IS_DEAD && STARTED){
 
     gap = int(random(PIPE_GAP_MIN, PIPE_GAP_MAX))
 
     //bottom pipes
+    if (score > 5){
+      MAX_NUMBER_BODIES = int(SCREEN_HEIGHT/(PIPE_BODY_HEIGHT*SCALE))-2
+      console.log('Difficulty increased')
+    }
     bottomBodies = int(random(PIPE_GAP_MAX, MAX_NUMBER_BODIES)) - gap
     for(var i=0; i<bottomBodies; i++){
       p = createSprite(window.innerWidth, GROUND_Y - (i * PIPE_BODY_HEIGHT * SCALE), 100, 70)
