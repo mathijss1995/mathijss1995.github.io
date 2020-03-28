@@ -108,7 +108,7 @@ function setup() {
   bird.scale = 0.05
   bird.addImage(birdImg);
   bird.setCollider("circle")
-  MAX_NUMBER_BODIES = int(SCREEN_HEIGHT/(PIPE_BODY_HEIGHT*SCALE))-4 // leave at least 3x pipe body height as gap
+  MAX_NUMBER_BODIES = int(SCREEN_HEIGHT/(PIPE_BODY_HEIGHT*SCALE))-8 // leave at least 3x pipe body height as gap
   score = 0
   STARTED = false
 
@@ -151,9 +151,20 @@ function draw() {
 
     //bottom pipes
     if (score > 5){
+      MAX_NUMBER_BODIES = int(SCREEN_HEIGHT/(PIPE_BODY_HEIGHT*SCALE))-6
+      console.log('Difficulty increased to -6')
+    } else if (score > 10){
+      MAX_NUMBER_BODIES = int(SCREEN_HEIGHT/(PIPE_BODY_HEIGHT*SCALE))-4
+      console.log('Difficulty increased to -4')
+    } else if (score > 20){
+      MAX_NUMBER_BODIES = int(SCREEN_HEIGHT/(PIPE_BODY_HEIGHT*SCALE))-3
+      console.log('Difficulty increased to -3')
+    } else if (score > 30){
       MAX_NUMBER_BODIES = int(SCREEN_HEIGHT/(PIPE_BODY_HEIGHT*SCALE))-2
-      console.log('Difficulty increased')
+      console.log('Difficulty increased to -2')
     }
+
+
     bottomBodies = int(random(PIPE_GAP_MAX, MAX_NUMBER_BODIES)) - gap
     for(var i=0; i<bottomBodies; i++){
       p = createSprite(window.innerWidth, GROUND_Y - (i * PIPE_BODY_HEIGHT * SCALE), 100, 70)
