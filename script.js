@@ -145,7 +145,7 @@ function draw() {
   }
 
 
-  if(frameCount % 100 == 0 && !IS_DEAD && STARTED){
+  if(frameCount % 80 == 0 && !IS_DEAD && STARTED){
 
     gap = int(random(PIPE_GAP_MIN, PIPE_GAP_MAX))
 
