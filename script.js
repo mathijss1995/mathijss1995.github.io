@@ -145,14 +145,14 @@ function draw() {
   }
 
   var frameDifficulty = 80;
-  if (score > 10){
-    frameDifficulty = 70;
-  } else if (score > 20){
-    frameDifficulty = 60;
+  if (score > 35){
+    frameDifficulty = 45;
   } else if (score > 25){
     frameDifficulty = 50;
-  } else if (score > 35){
-    frameDifficulty = 45;
+  } else if (score > 20){
+    frameDifficulty = 60;
+  } else if (score > 10){
+    frameDifficulty = 70;
   }
   console.log('frameDifficulty: ' + frameDifficulty);
 
@@ -160,20 +160,20 @@ function draw() {
 
     gap = int(random(PIPE_GAP_MIN, PIPE_GAP_MAX))
 
-    if (score > 10){
-      gap = gap - 1;
-      console.log('Gap: ' + gap)
-    } else if (score > 20){
-      gap = gap - 2;
-      console.log('Gap: ' + gap)
-    } else if (score > 30){
-      gap = gap - 3;
-      console.log('Gap: ' + gap)
-    } else if (score > 25 && gap <= 3){
+    if (score > 25 && gap <= 3){
       gap = 3;
-      console.log('Gap: ' + gap)
+      console.log('Gap (bottom threshold): ' + gap);
+    } else if (score > 30){
+      gap = gap -3;
+      console.log('Gap: ' + gap);
+    } else if (score > 20){
+      gap = gap -2;
+      console.log('Gap: ' + gap);
+    } else if (score > 10){
+      gap = gap - 1;
+      console.log('Gap: ' + gap);
     }
-
+    
     //bottom pipes
     
 
