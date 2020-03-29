@@ -28,8 +28,8 @@ function startExperiment(){
   } else {
     x.style.display = "none";
   }
-  setTimeout(function(){ download(); }, 180000);
-  setTimeout(function(){ alert('Thank you for playing. Please leave this window open, download the files and return to the questionnaire'); }, 180500);
+  setTimeout(function(){ download(); }, 600000);
+  setTimeout(function(){ alert('Thank you for playing. Please leave this window open, download the files and return to the questionnaire'); }, 600500);
   STARTED = true
   reset()
 }
@@ -87,9 +87,6 @@ function download() {
     textDoc.download = str(webcamTime)+'.txt';
     textDoc.click();
 }
-
-
-
 
 function preload() {
 	console.log('Loading images success')
