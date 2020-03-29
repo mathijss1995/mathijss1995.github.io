@@ -108,7 +108,7 @@ function setup() {
   bird.scale = 0.05
   bird.addImage(birdImg);
   bird.setCollider("circle")
-  MAX_NUMBER_BODIES = int(SCREEN_HEIGHT/(PIPE_BODY_HEIGHT*SCALE))-6 // leave at least 3x pipe body height as gap
+  MAX_NUMBER_BODIES = int(SCREEN_HEIGHT/(PIPE_BODY_HEIGHT*SCALE))-3 // leave at least 3x pipe body height as gap
   score = 0
   STARTED = false
 
@@ -159,10 +159,10 @@ function draw() {
     gap = int(random(PIPE_GAP_MIN, PIPE_GAP_MAX))
 
 
-    if (score > 30){
+    if (score > 50){
       gap = gap -3;
       console.log('Gap +dif-3: ' + gap);
-    } else if (score > 20){
+    } else if (score > 30){
       gap = gap -2;
       console.log('Gap +dif-2: ' + gap);
     } else if (score > 10){
@@ -175,6 +175,10 @@ function draw() {
       gap = 2;
     }
     
+    if (score > 50){
+      console.log('Max score')
+      gap = 1;
+    }
     
     var str = "newFrame" + ";" + Date.now() + ';BirdStatus; ' + IS_DEAD + ';Score; ' + score + ';bird.y; ' + bird.position.y + ';Gap: ' + gap + ';frameDifficulty: ' + frameDifficulty + ';EndLine' + ';';
     texts.push(str);
