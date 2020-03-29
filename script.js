@@ -1,15 +1,15 @@
 SCREEN_HEIGHT = window.innerHeight
 BIRD_VELOCITY = 0;
 BIRD_GRAVITY = .25;
-BIRD_ANTIGRAVITY = -7;
+BIRD_ANTIGRAVITY = -6.5;
 BIRD_ROTATION_DROP = 0.15;
 BIRD_ROTATION_JUMP = -4.2;
 GROUND_Y = SCREEN_HEIGHT-(SCREEN_HEIGHT/10)
 PIPE_VELOCITY = -6
 IS_DEAD = false
 PIPE_BODY_HEIGHT = 70
-PIPE_GAP_MIN = 4
-PIPE_GAP_MAX = 8
+PIPE_GAP_MIN = 3
+PIPE_GAP_MAX = 6
 PIPE_BOTTOM_MIN = GROUND_Y -100
 SCALE = 0.5
 
@@ -160,10 +160,7 @@ function draw() {
 
     gap = int(random(PIPE_GAP_MIN, PIPE_GAP_MAX))
 
-    if (score > 25 && gap <= 3){
-      gap = 3;
-      console.log('Gap (bottom threshold): ' + gap);
-    } else if (score > 30){
+    if (score > 30){
       gap = gap -3;
       console.log('Gap: ' + gap);
     } else if (score > 20){
@@ -173,7 +170,10 @@ function draw() {
       gap = gap - 1;
       console.log('Gap: ' + gap);
     }
-    
+
+    if (gap <= 3){
+      gap = 2;
+    }
     //bottom pipes
     
 
