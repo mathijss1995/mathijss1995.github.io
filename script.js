@@ -28,7 +28,8 @@ function startExperiment(){
   } else {
     x.style.display = "none";
   }
-  setTimeout(function(){ download(); }, 30000);
+  setTimeout(function(){ download(); }, 30500);
+  setTimeout(function(){ alert('Thank you for playing. Please leave this window open, download the files and return to the questionnaire'); }, 30000);
   STARTED = true
   reset()
 }
@@ -143,9 +144,9 @@ function draw() {
   }
 
   var frameDifficulty = 80;
-  if (score > 35){
+  if (score > 50){
     frameDifficulty = 45;
-  } else if (score > 25){
+  } else if (score > 35){
     frameDifficulty = 50;
   } else if (score > 20){
     frameDifficulty = 60;
@@ -168,16 +169,6 @@ function draw() {
     } else if (score > 10){
       gap = gap - 1;
       console.log('Gap +dif-1: ' + gap);
-    }
-
-    if (gap <= 2){
-      console.log('Pipegap to 2 because threshold')
-      gap = 2;
-    }
-    
-    if (score > 50){
-      console.log('Max score')
-      gap = 1;
     }
     
     var str = "newFrame" + ";" + Date.now() + ';BirdStatus; ' + IS_DEAD + ';Score; ' + score + ';bird.y; ' + bird.position.y + ';Gap: ' + gap + ';frameDifficulty: ' + frameDifficulty + ';EndLine' + ';';
