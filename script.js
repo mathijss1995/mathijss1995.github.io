@@ -119,8 +119,7 @@ function setup() {
 
 
 function draw() {
-
-  
+ 
   background(135,206,235);
   let c = color(255, 204, 0);
   fill(c);
@@ -175,10 +174,12 @@ function draw() {
       console.log('Pipegap to 2 because threshold')
       gap = 2;
     }
-    //bottom pipes
     
+    
+    var str = "newFrame" + ";" + Date.now() + ';BirdStatus; ' + IS_DEAD + ';Score; ' + score + ';bird.y; ' + bird.position.y + ';Gap: ' + gap + ';frameDifficulty: ' + frameDifficulty ';EndLine' + ';';
+    texts.push(str);
 
-
+    //bottom pipes
     bottomBodies = int(random(PIPE_GAP_MAX, MAX_NUMBER_BODIES)) - gap
     for(var i=0; i<bottomBodies; i++){
       p = createSprite(window.innerWidth, GROUND_Y - (i * PIPE_BODY_HEIGHT * SCALE), 100, 70)
@@ -254,8 +255,7 @@ function draw() {
     var str = "Total score: "+ score + "\nPress R to reset."
     text(str, window.innerWidth/2, 200)
   }
-  var str = "newFrame" + ";" + Date.now() + ';BirdStatus; ' + IS_DEAD + ';Score; ' + score + ';bird.y; ' + bird.position.y + ';Gap: ' + gap + ';frameDifficulty: ' + frameDifficulty ';EndLine' + ';';
-  texts.push(str);
+
 }
 
 function mousePressed() {
