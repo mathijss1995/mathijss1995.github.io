@@ -176,7 +176,7 @@ function draw() {
     }
     
     
-    var str = "newFrame" + ";" + Date.now() + ';BirdStatus; ' + IS_DEAD + ';Score; ' + score + ';bird.y; ' + bird.position.y + ';Gap: ' + gap + ';frameDifficulty: ' + frameDifficulty ';EndLine' + ';';
+    var str = "newFrame" + ";" + Date.now() + ';BirdStatus; ' + IS_DEAD + ';Score; ' + score + ';bird.y; ' + bird.position.y + ';Gap: ' + gap + ';frameDifficulty: ' + frameDifficulty + ';EndLine' + ';';
     texts.push(str);
 
     //bottom pipes
