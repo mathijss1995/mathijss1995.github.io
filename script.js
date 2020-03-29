@@ -8,7 +8,7 @@ GROUND_Y = SCREEN_HEIGHT-(SCREEN_HEIGHT/10)
 PIPE_VELOCITY = -6
 IS_DEAD = false
 PIPE_BODY_HEIGHT = 70
-PIPE_GAP_MIN = 2
+PIPE_GAP_MIN = 3
 PIPE_GAP_MAX = 7
 PIPE_BOTTOM_MIN = GROUND_Y -100
 SCALE = 0.5
@@ -28,8 +28,8 @@ function startExperiment(){
   } else {
     x.style.display = "none";
   }
-  setTimeout(function(){ download(); }, 30500);
-  setTimeout(function(){ alert('Thank you for playing. Please leave this window open, download the files and return to the questionnaire'); }, 30000);
+  setTimeout(function(){ download(); }, 180000);
+  setTimeout(function(){ alert('Thank you for playing. Please leave this window open, download the files and return to the questionnaire'); }, 180500);
   STARTED = true
   reset()
 }
