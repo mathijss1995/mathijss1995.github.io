@@ -160,18 +160,20 @@ function draw() {
 
     gap = int(random(PIPE_GAP_MIN, PIPE_GAP_MAX))
 
+
     if (score > 30){
       gap = gap -3;
-      console.log('Gap: ' + gap);
+      console.log('Gap +dif-3: ' + gap);
     } else if (score > 20){
       gap = gap -2;
-      console.log('Gap: ' + gap);
+      console.log('Gap +dif-2: ' + gap);
     } else if (score > 10){
       gap = gap - 1;
-      console.log('Gap: ' + gap);
+      console.log('Gap +dif-1: ' + gap);
     }
 
-    if (gap <= 3){
+    if (gap <= 2){
+      console.log('Pipegap to 2 because threshold')
       gap = 2;
     }
     //bottom pipes
