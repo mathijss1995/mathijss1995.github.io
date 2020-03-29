@@ -28,9 +28,14 @@ function startExperiment(){
   } else {
     x.style.display = "none";
   }
+  var str = "Experiment End" + ";" + Date.now() + ';EndLineExperimentEnd';
+  texts.push(str);
   setTimeout(function(){ download(); }, 600000);
   setTimeout(function(){ alert('Thank you for playing. Please leave this window open, download the files and return to the questionnaire'); }, 600500);
   STARTED = true
+  var str = "Experiment Start" + ";" + Date.now() + ';EndLineExperimentStart';
+  texts.push(str);
+
   reset()
 }
 
@@ -145,7 +150,7 @@ function draw() {
   var frameDifficulty = 80;
   if (score > 50){
     frameDifficulty = 46;
-  } else if (score > 35){
+  } else if (score > 32){
     frameDifficulty = 52;
   } else if (score > 20){
     frameDifficulty = 62;
