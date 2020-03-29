@@ -8,7 +8,7 @@ GROUND_Y = SCREEN_HEIGHT-(SCREEN_HEIGHT/10)
 PIPE_VELOCITY = -6
 IS_DEAD = false
 PIPE_BODY_HEIGHT = 70
-PIPE_GAP_MIN = 3
+PIPE_GAP_MIN = 2
 PIPE_GAP_MAX = 7
 PIPE_BOTTOM_MIN = GROUND_Y -100
 SCALE = 0.5
@@ -109,7 +109,7 @@ function setup() {
   bird.scale = 0.05
   bird.addImage(birdImg);
   bird.setCollider("circle")
-  MAX_NUMBER_BODIES = int(SCREEN_HEIGHT/(PIPE_BODY_HEIGHT*SCALE))-3 // leave at least 3x pipe body height as gap
+  MAX_NUMBER_BODIES = int(SCREEN_HEIGHT/(PIPE_BODY_HEIGHT*SCALE))-4 // leave at least 3x pipe body height as gap
   score = 0
   highScore = 0
   round = 1
@@ -149,11 +149,11 @@ function draw() {
   if (score > 50){
     frameDifficulty = 46;
   } else if (score > 35){
-    frameDifficulty = 51;
+    frameDifficulty = 52;
   } else if (score > 20){
-    frameDifficulty = 61;
+    frameDifficulty = 62;
   } else if (score > 10){
-    frameDifficulty = 71;
+    frameDifficulty = 72;
   }
   console.log('frameDifficulty: ' + frameDifficulty);
 
