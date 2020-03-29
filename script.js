@@ -8,8 +8,8 @@ GROUND_Y = SCREEN_HEIGHT-(SCREEN_HEIGHT/10)
 PIPE_VELOCITY = -6
 IS_DEAD = false
 PIPE_BODY_HEIGHT = 70
-PIPE_GAP_MIN = 1
-PIPE_GAP_MAX = 5
+PIPE_GAP_MIN = 4
+PIPE_GAP_MAX = 8
 PIPE_BOTTOM_MIN = GROUND_Y -100
 SCALE = 0.5
 
@@ -155,25 +155,27 @@ function draw() {
     frameDifficulty = 45;
   }
   console.log('frameDifficulty: ' + frameDifficulty);
-  
+
   if(frameCount % frameDifficulty == 0 && !IS_DEAD && STARTED){
 
     gap = int(random(PIPE_GAP_MIN, PIPE_GAP_MAX))
 
-    //bottom pipes
-    if (score > 5){
-      MAX_NUMBER_BODIES = int(SCREEN_HEIGHT/(PIPE_BODY_HEIGHT*SCALE))-5
-      console.log('Difficulty increased to -6')
-    } else if (score > 10){
-      MAX_NUMBER_BODIES = int(SCREEN_HEIGHT/(PIPE_BODY_HEIGHT*SCALE))-4
-      console.log('Difficulty increased to -4')
+    if (score > 10){
+      gap = gap - 1;
+      console.log('Gap: ' + gap)
     } else if (score > 20){
-      MAX_NUMBER_BODIES = int(SCREEN_HEIGHT/(PIPE_BODY_HEIGHT*SCALE))-3
-      console.log('Difficulty increased to -3')
-    } else if (score > 25){
-      MAX_NUMBER_BODIES = int(SCREEN_HEIGHT/(PIPE_BODY_HEIGHT*SCALE))-2
-      console.log('Difficulty increased to -2')
+      gap = gap - 2;
+      console.log('Gap: ' + gap)
+    } else if (score > 30){
+      gap = gap - 3;
+      console.log('Gap: ' + gap)
+    } else if (score > 25 && gap <= 3){
+      gap = 3;
+      console.log('Gap: ' + gap)
     }
+
+    //bottom pipes
+    
 
 
     bottomBodies = int(random(PIPE_GAP_MAX, MAX_NUMBER_BODIES)) - gap
