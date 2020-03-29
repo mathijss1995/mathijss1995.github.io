@@ -147,13 +147,13 @@ function draw() {
 
   var frameDifficulty = 80;
   if (score > 50){
-    frameDifficulty = 45;
+    frameDifficulty = 46;
   } else if (score > 35){
-    frameDifficulty = 50;
+    frameDifficulty = 51;
   } else if (score > 20){
-    frameDifficulty = 60;
+    frameDifficulty = 61;
   } else if (score > 10){
-    frameDifficulty = 70;
+    frameDifficulty = 71;
   }
   console.log('frameDifficulty: ' + frameDifficulty);
 
@@ -252,7 +252,7 @@ function draw() {
     //textFont(myFont)
     textAlign(CENTER);
     textSize(32);
-    var str = "Total score: "+ score + "\nPress R to reset." +"\n\nPlease keep looking into the camera!"+"\nYour highscore:" + highScore
+    var str = "Total score: "+ score + "\nPress R to reset." +"\n\nPlease keep looking into the camera!"+"\n\nYour highscore: " + highScore
     text(str, window.innerWidth/2, 200)
   }
 
