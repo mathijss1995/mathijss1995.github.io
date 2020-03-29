@@ -119,8 +119,7 @@ function setup() {
 
 
 function draw() {
-  var str = "newFrame" + ";" + Date.now() + ';BirdStatus; ' + IS_DEAD + ';Score; ' + score + ';bird.y; ' + bird.position.y + ';EndLine' + ';';
-  texts.push(str);
+
   
   background(135,206,235);
   let c = color(255, 204, 0);
@@ -255,6 +254,8 @@ function draw() {
     var str = "Total score: "+ score + "\nPress R to reset."
     text(str, window.innerWidth/2, 200)
   }
+  var str = "newFrame" + ";" + Date.now() + ';BirdStatus; ' + IS_DEAD + ';Score; ' + score + ';bird.y; ' + bird.position.y + ';Gap: ' + gap + ';frameDifficulty: ' + frameDifficulty ';EndLine' + ';';
+  texts.push(str);
 }
 
 function mousePressed() {
