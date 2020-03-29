@@ -111,6 +111,8 @@ function setup() {
   bird.setCollider("circle")
   MAX_NUMBER_BODIES = int(SCREEN_HEIGHT/(PIPE_BODY_HEIGHT*SCALE))-3 // leave at least 3x pipe body height as gap
   score = 0
+  highScore = 0
+  round = 1
   STARTED = false
 
   document.getElementById("startExperiment").addEventListener("click", startExperiment);
@@ -171,7 +173,7 @@ function draw() {
       console.log('Gap +dif-1: ' + gap);
     }
     
-    var str = "newFrame" + ";" + Date.now() + ';BirdStatus; ' + IS_DEAD + ';Score; ' + score + ';bird.y; ' + bird.position.y + ';Gap: ' + gap + ';frameDifficulty: ' + frameDifficulty + ';EndLine' + ';';
+    var str = "newFrame" + ";" + Date.now() + ';BirdStatus; ' + IS_DEAD + ';Score; ' + score + ';bird.y; ' + bird.position.y + ';Gap: ' + gap + ';frameDifficulty: ' + frameDifficulty + ';Round: ' + round + ';highscore:' + highScore + ';EndLine' + ';';
     texts.push(str);
 
     //bottom pipes
@@ -242,12 +244,15 @@ function draw() {
   text(score, 50, 50)
 
   if(IS_DEAD){
+    if (score > highScore){
+      highScore = score;
+    }
     noStroke();
     fill(255);
     //textFont(myFont)
     textAlign(CENTER);
     textSize(32);
-    var str = "Total score: "+ score + "\nPress R to reset."
+    var str = "Total score: "+ score + "\nPress R to reset." +"\n\nPlease keep looking into the camera!"+"\nYour highscore:" + highScore
     text(str, window.innerWidth/2, 200)
   }
 
@@ -291,6 +296,7 @@ function reset(){
   bird.position.y = 300
   bird.rotation = 0
   score = 0
+  round += 1
   var str = "reset;" + Date.now() + ";EndLineReset" + ';';
   texts.push(str)
   // var str = "RESET;";
