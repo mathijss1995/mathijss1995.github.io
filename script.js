@@ -98,7 +98,7 @@ function preload() {
   pipeBodyImg = loadImage('pipe_1.png');
   pipeHeadImg = loadImage('pipe_2.png');
   birdImg = loadImage('bird.png');
-  //myFont = loadFont('8bit.TTF');
+  myFont = loadFont('8bit.TTF');
 }
 
 
@@ -157,8 +157,7 @@ function draw() {
   } else if (score > 10){
     frameDifficulty = 72;
   }
-  console.log('frameDifficulty: ' + frameDifficulty);
-
+  
   if(frameCount % frameDifficulty == 0 && !IS_DEAD && STARTED){
 
     gap = int(random(PIPE_GAP_MIN, PIPE_GAP_MAX))
@@ -175,8 +174,7 @@ function draw() {
       console.log('Gap +dif-1: ' + gap);
     }
     
-    var str = "newFrame" + ";" + Date.now() + ';BirdStatus; ' + IS_DEAD + ';Score; ' + score + ';bird.y; ' + bird.position.y + ';Gap: ' + gap + ';frameDifficulty: ' + frameDifficulty + ';Round: ' + round + ';highscore:' + highScore + ';EndLine' + ';';
-    texts.push(str);
+    
 
     //bottom pipes
     bottomBodies = int(random(PIPE_GAP_MAX, MAX_NUMBER_BODIES)) - gap
@@ -213,6 +211,10 @@ function draw() {
 
 
   }
+
+  var str = "newFrame" + ";" + Date.now() + ';Bird is dead; ' + IS_DEAD + ';Score; ' + score + ';bird.y; ' + bird.position.y + ';Gap: ' + gap + ';frameDifficulty: ' + frameDifficulty + ';Round: ' + round + ';highscore:' + highScore + ';EndLine' + ';';
+  texts.push(str);
+
   removed = false
   for(p of pipes){
     // console.log(p.position.x)
@@ -240,7 +242,7 @@ function draw() {
 
   noStroke();
   fill(255);
-  //textFont(myFont)
+  textFont(myFont)
   textAlign(CENTER);
   textSize(32);
   text(score, 50, 50)
@@ -251,7 +253,7 @@ function draw() {
     }
     noStroke();
     fill(255);
-    //textFont(myFont)
+    textFont(myFont)
     textAlign(CENTER);
     textSize(32);
     var str = "Total score: "+ score + "\nPress R to reset." +"\n\nPlease keep looking into the camera!"+"\n\nYour highscore: " + highScore
