@@ -16,7 +16,7 @@ SCALE = 0.5
 
 var recordedChunks = [];
 var texts = []
-var constraints = { audio: false, video: true };
+var constraints = { audio: false, video: {frameRate: {min: 28, max: 32, ideal: 30}} };
 var options = {mimeType: 'video/webm; codecs=vp9'};
 
 
@@ -165,13 +165,12 @@ function draw() {
 
     if (score > 50){
       gap = gap -3;
-      console.log('Gap +dif-3: ' + gap);
-    } else if (score > 30){
+          } else if (score > 30){
       gap = gap -2;
-      console.log('Gap +dif-2: ' + gap);
+      
     } else if (score > 10){
       gap = gap - 1;
-      console.log('Gap +dif-1: ' + gap);
+      
     }
     
     
