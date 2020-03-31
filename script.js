@@ -124,7 +124,7 @@ function setup() {
 
 
 function draw() {
- 
+  gap = -1;
   background(135,206,235);
   let c = color(255, 204, 0);
   fill(c);
