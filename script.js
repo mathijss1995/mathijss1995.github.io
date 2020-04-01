@@ -148,14 +148,14 @@ function draw() {
   }
 
   var frameDifficulty = 80;
-  if (score > 50){
-    frameDifficulty = 46;
-  } else if (score > 32){
-    frameDifficulty = 52;
+  if (score > 60){
+    frameDifficulty = 47;
+  } else if (score > 40){
+    frameDifficulty = 53;
   } else if (score > 20){
-    frameDifficulty = 62;
+    frameDifficulty = 61;
   } else if (score > 10){
-    frameDifficulty = 72;
+    frameDifficulty = 73;
   }
   
   if(frameCount % frameDifficulty == 0 && !IS_DEAD && STARTED){
@@ -163,9 +163,9 @@ function draw() {
     gap = int(random(PIPE_GAP_MIN, PIPE_GAP_MAX))
 
 
-    if (score > 50){
+    if (score > 60){
       gap = gap -3;
-          } else if (score > 30){
+          } else if (score > 40){
       gap = gap -2;
       
     } else if (score > 10){
@@ -275,6 +275,8 @@ function keyPressed(){
     reset()
   } else if (key == "Escape"){
     die()
+    var str = "ParticipantEscaped;" + Date.now() + ";EndLineEscaped" + ';';
+    texts.push(str);
     download()
   }
 }
@@ -286,7 +288,7 @@ function die(){
   }
   bird.velocity.y = 0
   bird.rotationSpeed = 0
-  var str = "die;" + Date.now() + ";EndLineDie" + ';';
+  var str = "dead;" + Date.now() + ";EndLineDie" + ';';
   texts.push(str);
 
 
