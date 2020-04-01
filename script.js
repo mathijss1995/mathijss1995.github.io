@@ -28,8 +28,6 @@ function startExperiment(){
   } else {
     x.style.display = "none";
   }
-  var str = "Experiment End" + ";" + Date.now() + ';EndLineExperimentEnd';
-  texts.push(str);
   setTimeout(function(){ download(); }, 600000);
   setTimeout(function(){ alert('Thank you for playing. Please leave this window open, download the files and return to the questionnaire'); }, 600500);
   STARTED = true
@@ -70,6 +68,8 @@ if (navigator.mediaDevices.getUserMedia) {
 }
 
 function download() {
+  var str = "Experiment End" + ";" + Date.now() + ';EndLineExperimentEnd';
+  texts.push(str);
   mediaRecorder.stop()
   var blob = new Blob(recordedChunks, {
   type: 'video/webm'
@@ -114,7 +114,7 @@ function setup() {
   MAX_NUMBER_BODIES = int(SCREEN_HEIGHT/(PIPE_BODY_HEIGHT*SCALE))-4 // leave at least 3x pipe body height as gap
   score = 0
   highScore = 0
-  round = 1
+  round = 0
   STARTED = false
 
   document.getElementById("startExperiment").addEventListener("click", startExperiment);
