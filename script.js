@@ -81,7 +81,7 @@ function download() {
 
   a.style = 'display: none';
   a.href = url;
-  a.download = str(webcamTime)+'.webm';
+  a.download = string(webcamTime)+'.webm';
   a.click();
 
   window.URL.revokeObjectURL(url);
