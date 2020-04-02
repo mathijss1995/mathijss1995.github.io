@@ -68,6 +68,7 @@ if (navigator.mediaDevices.getUserMedia) {
 }
 
 function download() {
+  console.log('download file')
   var str = "Experiment End" + ";" + Date.now() + ';EndLineExperimentEnd';
   texts.push(str);
   mediaRecorder.stop()
@@ -274,6 +275,7 @@ function keyPressed(){
   if(key == 'r'){
     reset()
   } else if (key == "Escape"){
+    console.log('Manual Escape')
     die()
     var str = "ParticipantEscaped;" + Date.now() + ";EndLineEscaped" + ';';
     texts.push(str);
