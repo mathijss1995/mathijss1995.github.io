@@ -68,8 +68,8 @@ if (navigator.mediaDevices.getUserMedia) {
 }
 
 function download() {
-  var str = "Experiment End" + ";" + Date.now() + ';EndLineExperimentEnd';
-  texts.push(str);
+  //var str = "Experiment End" + ";" + Date.now() + ';EndLineExperimentEnd';
+  //texts.push(str);
   mediaRecorder.stop()
   var blob = new Blob(recordedChunks, {
   type: 'video/webm'
@@ -81,7 +81,7 @@ function download() {
 
   a.style = 'display: none';
   a.href = url;
-  a.download = string(webcamTime)+'.webm';
+  a.download = str(webcamTime)+'.webm';
   a.click();
 
   window.URL.revokeObjectURL(url);
